@@ -42,21 +42,22 @@ import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
 import com.example.rerpairrover.data.AuthViewModel
 import com.example.rerpairrover.navigation.ROUT_LOGIN
-import com.example.rerpairrover.ui.theme.BlueIvy
+import com.example.rerpairrover.ui.theme.Orange
 import com.example.rerpairrover.ui.theme.PurpleIvy
+import com.example.rerpairrover.ui.theme.YellowIvy
 
 @Composable
 fun SignupScreen(navController: NavController){
 
     Column(
-        modifier = Modifier.fillMaxSize().paint(painterResource(id = R.drawable.img_1), contentScale = ContentScale.FillBounds),
+        modifier = Modifier.fillMaxSize().paint(painterResource(id = R.drawable.img_5), contentScale = ContentScale.FillBounds),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
         Image(
-            painter = painterResource(id = R.drawable.img),
+            painter = painterResource(id = R.drawable.serve),
             contentDescription = "home",
             modifier = Modifier
                 .size(150.dp),
@@ -66,14 +67,14 @@ fun SignupScreen(navController: NavController){
 
 
         Text(
-            text = "Property Plus",
+            text = "RepairRovers",
             fontSize = 60.sp,
             fontFamily = FontFamily.Cursive,
-            color = Color.Magenta,
+            color = Color.Red,
         )
 
         Text(
-            text = "Think Home Think Property Plus",
+            text = "Rev up your ride with ease!",
             fontSize = 20.sp,
             fontFamily = FontFamily.Default
         )
@@ -88,7 +89,7 @@ fun SignupScreen(navController: NavController){
             onValueChange = {name = it},
             label = { Text(text = "Full Name")},
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "", tint = BlueIvy)},
+            leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "", tint = YellowIvy)},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
@@ -99,7 +100,7 @@ fun SignupScreen(navController: NavController){
             onValueChange = {email = it},
             label = { Text(text = "Email Address")},
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "", tint = BlueIvy)},
+            leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "", tint = YellowIvy)},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
         )
 
@@ -110,7 +111,7 @@ fun SignupScreen(navController: NavController){
             onValueChange = {password = it},
             label = { Text(text = "Password")},
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "", tint = BlueIvy)},
+            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "", tint = YellowIvy)},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             visualTransformation = PasswordVisualTransformation()
         )
@@ -122,7 +123,7 @@ fun SignupScreen(navController: NavController){
             onValueChange = {confpassword = it},
             label = { Text(text = "Confirm Password")},
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "", tint = BlueIvy)},
+            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "", tint = YellowIvy)},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             visualTransformation = PasswordVisualTransformation()
 
@@ -140,7 +141,7 @@ fun SignupScreen(navController: NavController){
                 .fillMaxWidth()
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp),
-            colors = ButtonDefaults.buttonColors(PurpleIvy),
+            colors = ButtonDefaults.buttonColors(Orange),
             shape = RoundedCornerShape(10.dp)
         ) {
             Text(text = "Create An Account")
@@ -155,7 +156,7 @@ fun SignupScreen(navController: NavController){
                 .fillMaxWidth()
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp),
-            colors = ButtonDefaults.buttonColors(PurpleIvy),
+            colors = ButtonDefaults.buttonColors(Orange),
             shape = RoundedCornerShape(10.dp)
         ) {
             Text(text = "Log In")

@@ -15,6 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +28,8 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.rerpairrover.R
 import com.example.rerpairrover.navigation.ROUT_LOGIN
-import com.example.rerpairrover.ui.theme.BlueIvy
+import com.example.rerpairrover.ui.theme.PurpleIvy
+import com.example.rerpairrover.ui.theme.YellowIvy
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -36,7 +38,7 @@ import kotlinx.coroutines.launch
 fun SplashScreen(navController: NavController){
     Column (modifier = Modifier
         .fillMaxSize()
-        .background(BlueIvy),
+        .background(YellowIvy),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
 
@@ -55,7 +57,7 @@ fun SplashScreen(navController: NavController){
 
 
         //Lottie Animation
-        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.property2))
+        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.repair))
         val progress by animateLottieCompositionAsState(composition)
         LottieAnimation(composition, progress,
             modifier = Modifier.size(300.dp)
