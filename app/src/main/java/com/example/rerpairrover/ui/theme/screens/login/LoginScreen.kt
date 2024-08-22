@@ -44,6 +44,7 @@ import com.example.rerpairrover.R
 import com.example.rerpairrover.data.AuthViewModel
 import com.example.rerpairrover.navigation.ROUT_SIGNUP
 import com.example.rerpairrover.ui.theme.Orange
+import com.example.rerpairrover.ui.theme.YellowIvy
 
 
 @Composable
@@ -69,7 +70,7 @@ fun LoginScreen(navController: NavController){
             text = "Welcome Back!",
             fontSize = 60.sp,
             fontFamily = FontFamily.Cursive,
-            color = Color.White,
+            color = Color.Red,
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -80,7 +81,6 @@ fun LoginScreen(navController: NavController){
             fontFamily = FontFamily.SansSerif,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            color = Color.White
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -118,7 +118,7 @@ fun LoginScreen(navController: NavController){
                 .fillMaxWidth()
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp),
-            colors = ButtonDefaults.buttonColors(Orange),
+            colors = ButtonDefaults.buttonColors(YellowIvy),
             shape = RoundedCornerShape(10.dp)
         ) {
             Text(text = "Log In")
@@ -128,7 +128,7 @@ fun LoginScreen(navController: NavController){
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(
-            text = "Do not have an acount?Sign up",
+            text = "Do not have an account?Sign up",
             fontSize = 18.sp,
             fontFamily = FontFamily.SansSerif,
             modifier = Modifier.fillMaxWidth().clickable { navController.navigate(ROUT_SIGNUP) },

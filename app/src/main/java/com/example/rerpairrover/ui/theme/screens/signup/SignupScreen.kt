@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
@@ -96,6 +97,17 @@ fun SignupScreen(navController: NavController){
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
+            value = name,
+            onValueChange = {name = it},
+            label = { Text(text = "Phone Number")},
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
+            leadingIcon = { Icon(imageVector = Icons.Default.Call, contentDescription = "", tint = YellowIvy)},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        OutlinedTextField(
             value = email,
             onValueChange = {email = it},
             label = { Text(text = "Email Address")},
@@ -141,7 +153,7 @@ fun SignupScreen(navController: NavController){
                 .fillMaxWidth()
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp),
-            colors = ButtonDefaults.buttonColors(Orange),
+            colors = ButtonDefaults.buttonColors(YellowIvy),
             shape = RoundedCornerShape(10.dp)
         ) {
             Text(text = "Create An Account")
@@ -156,7 +168,7 @@ fun SignupScreen(navController: NavController){
                 .fillMaxWidth()
                 .height(50.dp)
                 .padding(start = 20.dp, end = 20.dp),
-            colors = ButtonDefaults.buttonColors(Orange),
+            colors = ButtonDefaults.buttonColors(YellowIvy),
             shape = RoundedCornerShape(10.dp)
         ) {
             Text(text = "Log In")

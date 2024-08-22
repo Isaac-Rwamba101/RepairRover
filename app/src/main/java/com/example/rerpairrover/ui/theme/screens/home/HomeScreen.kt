@@ -6,6 +6,8 @@ import android.content.Intent
 import android.provider.MediaStore
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,17 +19,22 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
@@ -43,6 +50,7 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -67,6 +75,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -77,6 +86,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
 import com.example.rerpairrover.navigation.ROUT_HOME
 import com.example.rerpairrover.ui.theme.Orange
+import com.example.rerpairrover.ui.theme.PurpleIvy
 import com.example.rerpairrover.ui.theme.YellowIvy
 
 
@@ -91,7 +101,7 @@ fun HomeScreen(navController: NavController){
        Scaffold(
            bottomBar = {
                NavigationBar(
-                   containerColor = Orange,
+                   containerColor = YellowIvy,
                    contentColor = Color.Red
                ) {
                    bottomNavItems.forEachIndexed { index, bottomNavItem ->
@@ -131,35 +141,453 @@ fun HomeScreen(navController: NavController){
 
            topBar = {
                TopAppBar(
-                   title = { Text(text = "Additional Properties") },
-                   colors = TopAppBarDefaults.mediumTopAppBarColors(Orange)
+                   title = { Text(text = "RepairRovers") },
+                   colors = TopAppBarDefaults.mediumTopAppBarColors(YellowIvy),
+
+                           navigationIcon = {
+                       IconButton(onClick = { /*TODO*/ }) {
+                           Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "menu",)
+
+                       }
+                   },
+                   actions = {
+                       IconButton(onClick = { /*TODO*/ }) {
+                           Icon(imageVector = Icons.Default.Notifications, contentDescription = "menu",)
+
+                       }
+
+                   }
                )
            },
 
 
-           floatingActionButton = {
-               FloatingActionButton(onClick = { /*TODO*/ }) {
-                   IconButton(onClick = { /*TODO*/ }) {
-                       Icon(imageVector = Icons.Default.Add,
-                           contentDescription = "menu")
-                   }
-               }
-           },
+
            //Content Section
            content = @Composable{
                Column(
                    modifier = Modifier
                        .fillMaxSize()
-                       .padding(top = 70.dp, start = 20.dp),
+                       .padding(top = 70.dp, start = 20.dp, end = 20.dp)
+                       .horizontalScroll(rememberScrollState()),
                ){
+                       //Start of main card
+                       Card(modifier = Modifier
+                           .fillMaxWidth()
+                           .height(700.dp)
+                           .clickable { navController.navigate(ROUT_HOME) }
+                           .padding(top = 20.dp),
+                           colors = CardDefaults.cardColors(Color.White)
+                       ) {
+
+                           //Row1
+                           Row(modifier = Modifier.padding(20.dp)) {
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Home",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.img_2
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Property",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Home",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Home",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+
+                           }
+                           //End of row1
+
+
+                           //Row2
+                           Row(modifier = Modifier.padding(20.dp)) {
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp),
+                                   elevation = CardDefaults.cardElevation()) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Profile",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.img_2
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Settings",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Home",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Home",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+
+                           }
+                           //End of row2
+
+
+
+                           //Row3
+                           Row(modifier = Modifier.padding(20.dp)) {
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Add Products",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.img_2
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "View Products",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Home",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+                               Spacer(modifier = Modifier.width(10.dp))
+
+                               //Card
+                               Card(modifier = Modifier
+                                   .width(100.dp)
+                                   .height(120.dp)
+                                   .clickable { navController.navigate(ROUT_HOME) }) {
+                                   Column {
+
+                                       Spacer(modifier = Modifier.height(10.dp))
+                                       Box(modifier = Modifier.fillMaxWidth(),
+                                           contentAlignment = Alignment.Center) {
+                                           Image(painter = painterResource(
+                                               id = R.drawable.serve
+                                           ),
+                                               contentDescription ="home",
+                                               modifier = Modifier.size(60.dp) )
+
+
+                                       }
+                                       Spacer(modifier = Modifier.height(10.dp))
+
+                                       Text(text = "Home",
+                                           fontSize = 18.sp,
+                                           fontFamily = FontFamily.Serif,
+                                           modifier = Modifier.fillMaxWidth(),
+                                           textAlign = TextAlign.Center
+                                       )
+
+                                   }
+                               }
+                               //End of card
+
+                           }
+                           //End of row3
+
+
+                       }
+                       //End of main card
+
+                   }
+                   //End of ROW1
 
 
 
 
 
-
-
-               }
 
            }
 
@@ -205,7 +633,7 @@ val bottomNavItems = listOf(
 
     BottomNavItem(
         title = "Settings",
-        route="about",
+        route="settings",
         selectedIcon=Icons.Filled.Settings,
         unselectedIcon=Icons.Outlined.Settings,
         hasNews = true,

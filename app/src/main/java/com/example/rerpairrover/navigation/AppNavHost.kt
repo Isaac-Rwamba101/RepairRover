@@ -10,6 +10,8 @@ import com.example.repairrover.ui.theme.screens.signup.SignupScreen
 import com.example.rerpairrover.ui.theme.screens.about.AboutScreen
 import com.example.rerpairrover.ui.theme.screens.home.HomeScreen
 import com.example.rerpairrover.ui.theme.screens.login.LoginScreen
+import com.example.rerpairrover.ui.theme.screens.menu.MenuScreen
+import com.example.rerpairrover.ui.theme.screens.settings.SettingsScreen
 import com.example.rerpairrover.ui.theme.screens.splash.SplashScreen
 
 @Composable
@@ -43,6 +45,15 @@ fun AppNavHost(
         composable(ROUT_LOGIN) {
             LoginScreen(navController = navController)
         }
+
+        composable(ROUT_SETTINGS) {
+            SettingsScreen(navController = navController)
+        }
+
+        composable(ROUT_MENU) {
+           MenuScreen(navController = navController)
+        }
+
 
     }
 }
