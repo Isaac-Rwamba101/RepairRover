@@ -11,6 +11,7 @@ import com.example.rerpairrover.ui.theme.screens.about.AboutScreen
 import com.example.rerpairrover.ui.theme.screens.home.HomeScreen
 import com.example.rerpairrover.ui.theme.screens.login.LoginScreen
 import com.example.rerpairrover.ui.theme.screens.menu.MenuScreen
+import com.example.rerpairrover.ui.theme.screens.oilservice.OilserviceScreen
 import com.example.rerpairrover.ui.theme.screens.settings.SettingsScreen
 import com.example.rerpairrover.ui.theme.screens.splash.SplashScreen
 
@@ -52,6 +53,10 @@ fun AppNavHost(
 
         composable(ROUT_MENU) {
            MenuScreen(navController = navController)
+        }
+
+        composable(ROUT_OIL) {
+            OilserviceScreen(navController = navController)
         }
 
 

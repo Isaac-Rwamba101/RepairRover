@@ -615,7 +615,7 @@ val bottomNavItems = listOf(
 
     BottomNavItem(
         title = "Bookings",
-        route="details",
+        route="menu",
         selectedIcon=Icons.Filled.DateRange,
         unselectedIcon=Icons.Outlined.DateRange,
         hasNews = true,
