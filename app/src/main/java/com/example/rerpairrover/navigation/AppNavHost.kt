@@ -10,10 +10,12 @@ import com.example.repairrover.ui.theme.screens.signup.SignupScreen
 import com.example.rerpairrover.ui.theme.screens.about.AboutScreen
 import com.example.rerpairrover.ui.theme.screens.home.HomeScreen
 import com.example.rerpairrover.ui.theme.screens.login.LoginScreen
+import com.example.rerpairrover.ui.theme.screens.mechanicalparts.MechanicalpartsScreen
 import com.example.rerpairrover.ui.theme.screens.menu.MenuScreen
 import com.example.rerpairrover.ui.theme.screens.oilservice.OilserviceScreen
 import com.example.rerpairrover.ui.theme.screens.settings.SettingsScreen
 import com.example.rerpairrover.ui.theme.screens.splash.SplashScreen
+import com.example.rerpairrover.ui.theme.screens.tyres.TyresScreen
 
 @Composable
 fun AppNavHost(
@@ -57,6 +59,14 @@ fun AppNavHost(
 
         composable(ROUT_OIL) {
             OilserviceScreen(navController = navController)
+        }
+
+        composable(ROUT_TYRES) {
+            TyresScreen(navController = navController)
+        }
+
+        composable(ROUT_MECHANICAL) {
+            MechanicalpartsScreen(navController = navController)
         }
 
 

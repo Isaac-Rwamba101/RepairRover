@@ -65,7 +65,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
 import com.example.rerpairrover.navigation.ROUT_HOME
+import com.example.rerpairrover.navigation.ROUT_MECHANICAL
 import com.example.rerpairrover.navigation.ROUT_OIL
+import com.example.rerpairrover.navigation.ROUT_TYRES
 import com.example.rerpairrover.ui.theme.YellowIvy
 import com.example.rerpairrover.ui.theme.screens.home.bottomNavItems
 import kotlinx.coroutines.launch
@@ -234,7 +236,7 @@ fun MenuScreen(navController: NavController){
                         Card(modifier = Modifier
                             .width(100.dp)
                             .height(120.dp)
-                            .clickable { navController.navigate(ROUT_HOME) }) {
+                            .clickable { navController.navigate(ROUT_TYRES) }) {
                             Column {
 
                                 Spacer(modifier = Modifier.height(10.dp))
@@ -266,7 +268,7 @@ fun MenuScreen(navController: NavController){
                         Card(modifier = Modifier
                             .width(100.dp)
                             .height(120.dp)
-                            .clickable { navController.navigate(ROUT_HOME) }) {
+                            .clickable { navController.navigate(ROUT_MECHANICAL) }) {
                             Column {
 
                                 Spacer(modifier = Modifier.height(10.dp))
@@ -282,7 +284,7 @@ fun MenuScreen(navController: NavController){
                                 }
                                 Spacer(modifier = Modifier.height(10.dp))
 
-                                Text(text = "Home",
+                                Text(text = "Mechanical Parts",
                                     fontSize = 18.sp,
                                     fontFamily = FontFamily.Serif,
                                     modifier = Modifier.fillMaxWidth(),
