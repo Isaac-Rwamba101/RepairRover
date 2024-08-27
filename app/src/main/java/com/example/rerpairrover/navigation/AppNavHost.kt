@@ -8,6 +8,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.repairrover.ui.theme.screens.signup.SignupScreen
 import com.example.rerpairrover.ui.theme.screens.about.AboutScreen
+import com.example.rerpairrover.ui.theme.screens.accessories.AccessoriesScreen
+import com.example.rerpairrover.ui.theme.screens.bookings.BookingsScreen
+import com.example.rerpairrover.ui.theme.screens.contacts.ContactsScreen
 import com.example.rerpairrover.ui.theme.screens.home.HomeScreen
 import com.example.rerpairrover.ui.theme.screens.login.LoginScreen
 import com.example.rerpairrover.ui.theme.screens.mechanicalparts.MechanicalpartsScreen
@@ -67,6 +70,18 @@ fun AppNavHost(
 
         composable(ROUT_MECHANICAL) {
             MechanicalpartsScreen(navController = navController)
+        }
+
+        composable(ROUT_ACCESSORIES) {
+            AccessoriesScreen(navController = navController)
+        }
+
+        composable(ROUT_CONTACTS) {
+            ContactsScreen(navController = navController)
+        }
+
+        composable(ROUT_BOOKINGS) {
+           BookingsScreen(navController = navController)
         }
 
 

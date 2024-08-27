@@ -42,6 +42,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
 import com.example.rerpairrover.data.AuthViewModel
+import com.example.rerpairrover.navigation.ROUT_MENU
 import com.example.rerpairrover.navigation.ROUT_SIGNUP
 import com.example.rerpairrover.ui.theme.Orange
 import com.example.rerpairrover.ui.theme.YellowIvy
@@ -113,7 +114,9 @@ fun LoginScreen(navController: NavController){
 
         val context = LocalContext.current
         val authViewModel = AuthViewModel(navController, context)
-        Button(onClick = { authViewModel.login(email, password)},
+        Button(onClick = { authViewModel.login(email, password)
+            navController.navigate(ROUT_MENU)},
+
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)

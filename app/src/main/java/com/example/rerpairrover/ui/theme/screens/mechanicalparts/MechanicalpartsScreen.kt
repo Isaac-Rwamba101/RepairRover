@@ -12,10 +12,20 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,25 +38,31 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.rerpairrover.navigation.ROUT_MENU
+import com.example.rerpairrover.navigation.ROUT_OIL
 import com.example.rerpairrover.ui.theme.YellowIvy
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MechanicalpartsScreen(navController: NavController){
 
     Column(modifier = Modifier
         .fillMaxSize()
-        .background(YellowIvy)) {
+        .background(YellowIvy)
+        .verticalScroll(rememberScrollState())) {
 
-        Text(
-            text = "Mechanical Parts Servicing",
-            fontSize = 40.sp,
-            fontFamily = FontFamily.Serif,
-            modifier = Modifier.padding(top = 20.dp, start = 10.dp)
+        TopAppBar(
+            title = { Text(text = "Mechanical Parts Servicing") },
+            colors = TopAppBarDefaults.mediumTopAppBarColors(YellowIvy),
 
+            navigationIcon = {
+                IconButton(onClick = { navController.navigate(ROUT_MENU )}) {
+                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "menu",)
 
+                }
+            },
 
         )
-
 
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -69,7 +85,10 @@ fun MechanicalpartsScreen(navController: NavController){
                     Spacer(modifier = Modifier.height(10.dp))
                 }
 
-                Row (modifier = Modifier.background(YellowIvy).padding(top = 20.dp)){
+                Row (modifier = Modifier
+                    .background(YellowIvy)
+                    .fillMaxWidth()
+                    .padding(top = 20.dp)){
                     Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
 
                         Box(modifier = Modifier
@@ -78,7 +97,7 @@ fun MechanicalpartsScreen(navController: NavController){
                             .background(Color.Gray), contentAlignment = Alignment.Center){
 
                             Image(
-                                painter = painterResource(id = com.example.rerpairrover.R.drawable.filter),
+                                painter = painterResource(id = com.example.rerpairrover.R.drawable.brakes),
                                 contentDescription = "home",
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -95,7 +114,7 @@ fun MechanicalpartsScreen(navController: NavController){
                     }
                     Spacer(modifier = Modifier.width(20.dp))
 
-                    Column(modifier = Modifier.padding(top = 30.dp)) {
+                    Column(modifier = Modifier.padding(top = 20.dp)) {
                         Text(
                             text = "Brakes",
                             fontSize = 20.sp)
@@ -106,7 +125,8 @@ fun MechanicalpartsScreen(navController: NavController){
                 }
                 Spacer(modifier = Modifier.height(20.dp))
 
-                Row {
+                Row(modifier = Modifier
+                    .fillMaxWidth()) {
                     Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
 
                         Box(modifier = Modifier
@@ -115,7 +135,7 @@ fun MechanicalpartsScreen(navController: NavController){
                             .background(Color.Gray), contentAlignment = Alignment.Center){
 
                             Image(
-                                painter = painterResource(id = com.example.rerpairrover.R.drawable.oil),
+                                painter = painterResource(id = com.example.rerpairrover.R.drawable.batteries),
                                 contentDescription = "home",
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -132,7 +152,7 @@ fun MechanicalpartsScreen(navController: NavController){
                     }
                     Spacer(modifier = Modifier.width(20.dp))
 
-                    Column {
+                    Column(modifier = Modifier.padding(top = 20.dp))  {
                         Text(
                             text = "Batteries",
                             fontSize = 20.sp)
@@ -142,7 +162,9 @@ fun MechanicalpartsScreen(navController: NavController){
 
                 }
                 Spacer(modifier = Modifier.height(20.dp))
-                Row(modifier = Modifier.background(YellowIvy)) {
+                Row(modifier = Modifier
+                    .background(YellowIvy)
+                    .fillMaxWidth()) {
                     Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
 
                         Box(modifier = Modifier
@@ -151,7 +173,7 @@ fun MechanicalpartsScreen(navController: NavController){
                             .background(Color.Gray), contentAlignment = Alignment.Center){
 
                             Image(
-                                painter = painterResource(id = com.example.rerpairrover.R.drawable.diagnostics),
+                                painter = painterResource(id = com.example.rerpairrover.R.drawable.shock),
                                 contentDescription = "home",
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -168,7 +190,7 @@ fun MechanicalpartsScreen(navController: NavController){
                     }
                     Spacer(modifier = Modifier.width(20.dp))
 
-                    Column {
+                    Column(modifier = Modifier.padding(top = 20.dp))  {
                         Text(
                             text = "Shock Absorbers & Springs",
                             fontSize = 20.sp)
@@ -179,7 +201,8 @@ fun MechanicalpartsScreen(navController: NavController){
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))
-                Row {
+                Row(modifier = Modifier
+                    .fillMaxWidth()) {
                     Card(modifier = Modifier.padding(top = 20.dp)) {
 
                         Box(modifier = Modifier
@@ -188,7 +211,7 @@ fun MechanicalpartsScreen(navController: NavController){
                             .background(Color.Gray), contentAlignment = Alignment.Center){
 
                             Image(
-                                painter = painterResource(id = com.example.rerpairrover.R.drawable.spark),
+                                painter = painterResource(id = com.example.rerpairrover.R.drawable.wiper),
                                 contentDescription = "home",
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -205,7 +228,7 @@ fun MechanicalpartsScreen(navController: NavController){
                     }
                     Spacer(modifier = Modifier.width(20.dp))
 
-                    Column {
+                    Column(modifier = Modifier.padding(top = 20.dp))  {
                         Text(
                             text = "Wiper blades",
                             fontSize = 20.sp)
