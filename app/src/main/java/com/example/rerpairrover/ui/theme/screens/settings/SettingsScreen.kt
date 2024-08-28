@@ -13,9 +13,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,6 +39,7 @@ import com.example.rerpairrover.R
 import com.example.rerpairrover.navigation.ROUT_HOME
 import com.example.rerpairrover.ui.theme.YellowIvy
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(navController: NavController){
 
@@ -40,15 +48,22 @@ fun SettingsScreen(navController: NavController){
         .background(YellowIvy),
         ) {
 
-        Text(
-            text = "Settings",
-            fontSize = 40.sp,
-            fontFamily = FontFamily.Serif,
-            modifier = Modifier.padding(top = 20.dp, start = 10.dp)
+        TopAppBar(
+            title = { Text(
+                text = "Settings",
+                fontFamily = FontFamily.SansSerif,
+                fontSize = 30.sp) },
+            colors = TopAppBarDefaults.mediumTopAppBarColors(YellowIvy),
 
+            navigationIcon = {
+                IconButton(onClick = { navController.navigate(ROUT_HOME )}) {
+                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "menu",)
 
+                }
+            },
 
-        )
+            )
+
         Spacer(modifier = Modifier.height(10.dp))
 
         Column(modifier = Modifier) {

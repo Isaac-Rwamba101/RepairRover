@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.navigation.ROUT_HOME
-import com.example.rerpairrover.navigation.ROUT_MENU
 import com.example.rerpairrover.ui.theme.YellowIvy
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,11 +52,14 @@ fun OilserviceScreen(navController: NavController){
         .verticalScroll(rememberScrollState())) {
 
         TopAppBar(
-            title = { Text(text = "Oil Service") },
+            title = { Text(
+                text = "Oil Service",
+                fontFamily = FontFamily.SansSerif,
+                fontSize = 30.sp) },
             colors = TopAppBarDefaults.mediumTopAppBarColors(YellowIvy),
 
             navigationIcon = {
-                IconButton(onClick = { navController.navigate(ROUT_MENU )}) {
+                IconButton(onClick = { navController.navigate(ROUT_HOME )}) {
                     Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "menu",)
 
                 }

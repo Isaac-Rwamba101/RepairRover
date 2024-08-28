@@ -12,6 +12,8 @@ import androidx.navigation.compose.rememberNavController
 fun BookingsScreen(navController: NavController){
    Column(modifier = Modifier.fillMaxSize()) {
 
+
+
    }
 
 }

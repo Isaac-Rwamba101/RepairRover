@@ -9,14 +9,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,6 +37,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,7 +46,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
 import com.example.rerpairrover.data.AuthViewModel
-import com.example.rerpairrover.navigation.ROUT_MENU
+import com.example.rerpairrover.navigation.ROUT_HOME
+
 import com.example.rerpairrover.navigation.ROUT_SIGNUP
 import com.example.rerpairrover.ui.theme.Orange
 import com.example.rerpairrover.ui.theme.YellowIvy
@@ -52,8 +57,13 @@ import com.example.rerpairrover.ui.theme.YellowIvy
 fun LoginScreen(navController: NavController){
 
     Column(
-        modifier = Modifier.fillMaxSize().paint(painterResource(id = R.drawable.img_5), contentScale = ContentScale.FillBounds),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier
+            .fillMaxSize()
+            .paint(
+                painterResource(id = R.drawable.img_5),
+                contentScale = ContentScale.FillBounds
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -88,26 +98,66 @@ fun LoginScreen(navController: NavController){
 
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
+        var passwordVisible by remember { mutableStateOf(false) }
+
+        //Function to determine visual transformation based on visibility
+        val visualTransformation: VisualTransformation =
+            if (passwordVisible) VisualTransformation.None
+        else
+            PasswordVisualTransformation()
+
+        //Function to switch the password visibility
+        fun togglePasswordVisibility(){
+            passwordVisible =! passwordVisible
+        }
 
         OutlinedTextField(
             value = email,
             onValueChange = {email = it},
             label = { Text(text = "Email Address")},
-            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp),
             leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "", tint = Orange) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         )
 
         Spacer(modifier = Modifier.height(10.dp))
 
+        var passwordVisible1 by remember { mutableStateOf(false) }
+        // Function to determine visual transformation based on visibility
+        val visualTransformation1: VisualTransformation =
+            if (passwordVisible) VisualTransformation.None
+            else PasswordVisualTransformation()
+        // Function to switch the password visibility
+        fun togglePasswordVisibility1() {
+            passwordVisible1 = !passwordVisible1
+        }
+
         OutlinedTextField(
             value = password,
             onValueChange = {password = it},
-            label = { Text(text = "Password")},
-            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "", tint = Orange)},
+            label = { Text(text = "Password", fontFamily = FontFamily.SansSerif)},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            visualTransformation = PasswordVisualTransformation()
+            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "",tint = YellowIvy) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp),
+            shape = RoundedCornerShape(5.dp),
+            visualTransformation = visualTransformation,
+            trailingIcon = {
+                val icon = if (passwordVisible) {
+                    //Download a password show icon
+                    painterResource(id = R.drawable.show,)
+                } else {
+                    //Download a password hide icon
+                    painterResource(id = R.drawable.hide)
+                }
+                IconButton(onClick = { togglePasswordVisibility1() }) {
+                    Icon(painter = icon, contentDescription = null)
+                }
+            }
+
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -115,7 +165,7 @@ fun LoginScreen(navController: NavController){
         val context = LocalContext.current
         val authViewModel = AuthViewModel(navController, context)
         Button(onClick = { authViewModel.login(email, password)
-            navController.navigate(ROUT_MENU)},
+            navController.navigate(ROUT_HOME)},
 
             modifier = Modifier
                 .fillMaxWidth()
@@ -134,7 +184,9 @@ fun LoginScreen(navController: NavController){
             text = "Do not have an account?Sign up",
             fontSize = 18.sp,
             fontFamily = FontFamily.SansSerif,
-            modifier = Modifier.fillMaxWidth().clickable { navController.navigate(ROUT_SIGNUP) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { navController.navigate(ROUT_SIGNUP) },
             textAlign = TextAlign.Center
         )
 
