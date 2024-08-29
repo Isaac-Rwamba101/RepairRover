@@ -46,8 +46,7 @@ fun TyresScreen(navController: NavController){
 
     Column(modifier = Modifier
         .fillMaxSize()
-        .background(YellowIvy)
-        .verticalScroll(rememberScrollState())) {
+        .background(YellowIvy)) {
 
         TopAppBar(
             title = { Text(
@@ -75,7 +74,8 @@ fun TyresScreen(navController: NavController){
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(800.dp),
+                    .height(900.dp)
+                    .verticalScroll(rememberScrollState()),
                 shape = RoundedCornerShape(40.dp),
                 colors = CardDefaults.cardColors(Color.White)
 

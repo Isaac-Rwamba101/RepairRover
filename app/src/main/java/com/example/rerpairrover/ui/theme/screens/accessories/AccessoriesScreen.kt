@@ -45,8 +45,7 @@ fun AccessoriesScreen(navController: NavController){
 
     Column(modifier = Modifier
         .fillMaxSize()
-        .background(YellowIvy)
-        .verticalScroll(rememberScrollState())) {
+        .background(YellowIvy)) {
 
         TopAppBar(
             title = { Text(text = "Accessories") },
@@ -70,7 +69,8 @@ fun AccessoriesScreen(navController: NavController){
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(1350.dp),
+                    .height(1350.dp)
+                    .verticalScroll(rememberScrollState()),
                 shape = RoundedCornerShape(40.dp),
                 colors = CardDefaults.cardColors(Color.White)
 

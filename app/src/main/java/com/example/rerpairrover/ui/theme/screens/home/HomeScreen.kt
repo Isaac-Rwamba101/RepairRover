@@ -512,7 +512,7 @@ val bottomNavItems = listOf(
 
     BottomNavItem(
         title = "Locate Us",
-        route="bookings",
+        route="location",
         selectedIcon=Icons.Filled.Place,
         unselectedIcon=Icons.Outlined.Place,
         hasNews = true,

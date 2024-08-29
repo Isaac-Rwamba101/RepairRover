@@ -12,6 +12,7 @@ import com.example.rerpairrover.ui.theme.screens.accessories.AccessoriesScreen
 import com.example.rerpairrover.ui.theme.screens.bookings.BookingsScreen
 import com.example.rerpairrover.ui.theme.screens.contacts.ContactsScreen
 import com.example.rerpairrover.ui.theme.screens.home.HomeScreen
+import com.example.rerpairrover.ui.theme.screens.location.LocationScreen
 import com.example.rerpairrover.ui.theme.screens.login.LoginScreen
 import com.example.rerpairrover.ui.theme.screens.mechanicalparts.MechanicalpartsScreen
 import com.example.rerpairrover.ui.theme.screens.notifications.NotificationsScreen
@@ -19,6 +20,8 @@ import com.example.rerpairrover.ui.theme.screens.oilservice.OilserviceScreen
 import com.example.rerpairrover.ui.theme.screens.settings.SettingsScreen
 import com.example.rerpairrover.ui.theme.screens.splash.SplashScreen
 import com.example.rerpairrover.ui.theme.screens.tyres.TyresScreen
+import com.example.rerpairrover.ui.theme.screens.upload.UploadScreen
+import com.example.rerpairrover.ui.theme.screens.view.ViewScreen
 
 @Composable
 fun AppNavHost(
@@ -83,6 +86,18 @@ fun AppNavHost(
 
         composable(ROUT_NOTIFICATIONS) {
            NotificationsScreen(navController = navController)
+        }
+
+        composable(ROUT_LOCATION) {
+            LocationScreen(navController = navController)
+        }
+
+        composable(ROUT_UPLOAD) {
+           UploadScreen(navController = navController)
+        }
+
+        composable(ROUT_VIEW) {
+            ViewScreen(navController = navController)
         }
 
 

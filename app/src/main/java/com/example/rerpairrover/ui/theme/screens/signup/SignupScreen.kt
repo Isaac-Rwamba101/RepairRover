@@ -19,6 +19,8 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -47,8 +49,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
 import com.example.rerpairrover.data.AuthViewModel
 import com.example.rerpairrover.navigation.ROUT_LOGIN
-import com.example.rerpairrover.ui.theme.Orange
-import com.example.rerpairrover.ui.theme.PurpleIvy
 import com.example.rerpairrover.ui.theme.YellowIvy
 
 @Composable
@@ -57,7 +57,6 @@ fun SignupScreen(navController: NavController){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
             .paint(painterResource(id = R.drawable.img_5), contentScale = ContentScale.FillBounds),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -87,6 +86,10 @@ fun SignupScreen(navController: NavController){
             fontFamily = FontFamily.Default
         )
 
+        Spacer(modifier = Modifier.height(50.dp))
+
+
+
         var name by remember { mutableStateOf("") }
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
@@ -94,153 +97,175 @@ fun SignupScreen(navController: NavController){
         var passwordVisible1 by remember { mutableStateOf(false) }
 
 
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+                    .height(630.dp).padding(20.dp),
+                shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp, bottomEnd = 30.dp, bottomStart = 30.dp),
+                colors = CardDefaults.cardColors(Color.White)
 
-        OutlinedTextField(
-            value = name,
-            onValueChange = {name = it},
-            label = { Text(text = "Full Name")},
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "", tint = YellowIvy)},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
-        )
+            ) {
 
-        Spacer(modifier = Modifier.height(20.dp))
 
-        OutlinedTextField(
-            value = name,
-            onValueChange = {name = it},
-            label = { Text(text = "Phone Number")},
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Call, contentDescription = "", tint = YellowIvy)},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
-        )
 
-        Spacer(modifier = Modifier.height(20.dp))
 
-        OutlinedTextField(
-            value = email,
-            onValueChange = {email = it},
-            label = { Text(text = "Email Address")},
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "", tint = YellowIvy)},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
-        )
 
-        Spacer(modifier = Modifier.height(20.dp))
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = {name = it},
+                    label = { Text(text = "Full Name")},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp),
+                    leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "", tint = YellowIvy)},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+                )
 
-        var passwordVisible by remember { mutableStateOf(false) }
-        // Function to determine visual transformation based on visibility
-        val visualTransformation: VisualTransformation =
-            if (passwordVisible) VisualTransformation.None
-            else PasswordVisualTransformation()
-        // Function to switch the password visibility
-        fun togglePasswordVisibility() {
-            passwordVisible = !passwordVisible
-        }
+                Spacer(modifier = Modifier.height(20.dp))
 
-        OutlinedTextField(
-            value = password,
-            onValueChange = {password = it},
-            label = { Text(text = "Password", fontFamily = FontFamily.SansSerif)},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "",tint = YellowIvy) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
-            shape = RoundedCornerShape(5.dp),
-            visualTransformation = visualTransformation,
-            trailingIcon = {
-                val icon = if (passwordVisible) {
-                    //Download a password show icon
-                    painterResource(id = R.drawable.show)
-                } else {
-                    //Download a password hide icon
-                    painterResource(id = R.drawable.hide)
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = {name = it},
+                    label = { Text(text = "Phone Number")},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp),
+                    leadingIcon = { Icon(imageVector = Icons.Default.Call, contentDescription = "", tint = YellowIvy)},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = {email = it},
+                    label = { Text(text = "Email Address")},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp),
+                    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "", tint = YellowIvy)},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                var passwordVisible by remember { mutableStateOf(false) }
+                // Function to determine visual transformation based on visibility
+                val visualTransformation: VisualTransformation =
+                    if (passwordVisible) VisualTransformation.None
+                    else PasswordVisualTransformation()
+                // Function to switch the password visibility
+                fun togglePasswordVisibility() {
+                    passwordVisible = !passwordVisible
                 }
-                IconButton(onClick = { togglePasswordVisibility() }) {
-                    Icon(painter = icon, contentDescription = null)
+
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = {password = it},
+                    label = { Text(text = "Password", fontFamily = FontFamily.SansSerif)},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "",tint = YellowIvy) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp),
+                    shape = RoundedCornerShape(5.dp),
+                    visualTransformation = visualTransformation,
+                    trailingIcon = {
+                        val icon = if (passwordVisible) {
+                            //Download a password show icon
+                            painterResource(id = R.drawable.show)
+                        } else {
+                            //Download a password hide icon
+                            painterResource(id = R.drawable.hide)
+                        }
+                        IconButton(onClick = { togglePasswordVisibility() }) {
+                            Icon(painter = icon, contentDescription = null)
+                        }
+                    }
+
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                var passwordVisible2 by remember { mutableStateOf(false) }
+                // Function to determine visual transformation based on visibility
+                val visualTransformation2: VisualTransformation =
+                    if (passwordVisible) VisualTransformation.None
+                    else PasswordVisualTransformation()
+                // Function to switch the password visibility
+                fun togglePasswordVisibility2() {
+                    passwordVisible = !passwordVisible
                 }
+
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = {password = it},
+                    label = { Text(text = "Confirm Password", fontFamily = FontFamily.SansSerif)},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "",tint = YellowIvy) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp),
+                    shape = RoundedCornerShape(5.dp),
+                    visualTransformation = visualTransformation,
+                    trailingIcon = {
+                        val icon = if (passwordVisible) {
+                            //Download a password show icon
+                            painterResource(id = R.drawable.show,)
+                        } else {
+                            //Download a password hide icon
+                            painterResource(id = R.drawable.hide)
+                        }
+                        IconButton(onClick = { togglePasswordVisibility() }) {
+                            Icon(painter = icon, contentDescription = null)
+                        }
+                    }
+
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+
+                val context = LocalContext.current
+                val authViewModel = AuthViewModel(navController, context)
+                Button(onClick = {
+                    authViewModel.signup(name, email, password,confpassword)
+                },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                        .padding(start = 20.dp, end = 20.dp),
+                    colors = ButtonDefaults.buttonColors(YellowIvy),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    Text(text = "Create An Account")
+
+                }
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+
+                Button(onClick = {  navController.navigate(ROUT_LOGIN) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp)
+                        .padding(start = 20.dp, end = 20.dp),
+                    colors = ButtonDefaults.buttonColors(YellowIvy),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    Text(text = "Log In")
+
+                }
+
             }
 
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        var passwordVisible2 by remember { mutableStateOf(false) }
-        // Function to determine visual transformation based on visibility
-        val visualTransformation2: VisualTransformation =
-            if (passwordVisible) VisualTransformation.None
-            else PasswordVisualTransformation()
-        // Function to switch the password visibility
-        fun togglePasswordVisibility2() {
-            passwordVisible = !passwordVisible
-        }
-
-        OutlinedTextField(
-            value = password,
-            onValueChange = {password = it},
-            label = { Text(text = "Confirm Password", fontFamily = FontFamily.SansSerif)},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "",tint = YellowIvy) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
-            shape = RoundedCornerShape(5.dp),
-            visualTransformation = visualTransformation,
-            trailingIcon = {
-                val icon = if (passwordVisible) {
-                    //Download a password show icon
-                    painterResource(id = R.drawable.show,)
-                } else {
-                    //Download a password hide icon
-                    painterResource(id = R.drawable.hide)
-                }
-                IconButton(onClick = { togglePasswordVisibility() }) {
-                    Icon(painter = icon, contentDescription = null)
-                }
-            }
-
-        )
-
-        Spacer(modifier = Modifier.height(20.dp))
 
 
-        val context = LocalContext.current
-        val authViewModel = AuthViewModel(navController, context)
-        Button(onClick = {
-            authViewModel.signup(name, email, password,confpassword)
-        },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .padding(start = 20.dp, end = 20.dp),
-            colors = ButtonDefaults.buttonColors(YellowIvy),
-            shape = RoundedCornerShape(10.dp)
-        ) {
-            Text(text = "Create An Account")
-
-        }
-
-        Spacer(modifier = Modifier.height(20.dp))
 
 
-        Button(onClick = {  navController.navigate(ROUT_LOGIN) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
-                .padding(start = 20.dp, end = 20.dp),
-            colors = ButtonDefaults.buttonColors(YellowIvy),
-            shape = RoundedCornerShape(10.dp)
-        ) {
-            Text(text = "Log In")
 
-        }
+
 
 
 
