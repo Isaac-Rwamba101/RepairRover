@@ -73,6 +73,7 @@ import com.example.rerpairrover.navigation.ROUT_MECHANICAL
 import com.example.rerpairrover.navigation.ROUT_NOTIFICATIONS
 import com.example.rerpairrover.navigation.ROUT_OIL
 import com.example.rerpairrover.navigation.ROUT_TYRES
+import com.example.rerpairrover.navigation.ROUT_UPLOAD
 import com.example.rerpairrover.ui.theme.YellowIvy
 import com.example.rerpairrover.ui.theme.screens.notifications.bottomNavItems
 import kotlinx.coroutines.launch
@@ -418,6 +419,38 @@ fun HomeScreen(navController: NavController){
                         //End of card
                         Spacer(modifier = Modifier.width(10.dp))
 
+                        Spacer(modifier = Modifier.width(10.dp))
+
+                        Card(modifier = Modifier
+                            .width(100.dp)
+                            .height(120.dp)
+                            .clickable { navController.navigate(ROUT_UPLOAD) }) {
+                            Column {
+
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Box(modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center) {
+                                    Image(painter = painterResource(
+                                        id = R.drawable.bookings
+                                    ),
+                                        contentDescription ="home",
+                                        modifier = Modifier.size(65.dp) )
+
+
+                                }
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Text(text = "Reviews",
+                                    fontSize = 17.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    modifier = Modifier.fillMaxWidth(),
+                                    textAlign = TextAlign.Center
+                                )
+
+                            }
+                        }
+                        //End of card
+                        Spacer(modifier = Modifier.width(10.dp))
 
 
                     }

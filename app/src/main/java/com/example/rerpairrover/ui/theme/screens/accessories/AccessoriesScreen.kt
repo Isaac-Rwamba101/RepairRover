@@ -17,6 +17,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,12 +32,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.rerpairrover.data.AuthViewModel
 import com.example.rerpairrover.navigation.ROUT_HOME
 import com.example.rerpairrover.ui.theme.YellowIvy
 
@@ -84,6 +88,23 @@ fun AccessoriesScreen(navController: NavController){
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(text = "This range is made up of various categories:")
                     Spacer(modifier = Modifier.height(10.dp))
+
+                    val context = LocalContext.current
+                    val authViewModel = AuthViewModel(navController, context)
+                    Button(onClick = { navController.navigate(ROUT_HOME) },
+
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .padding(start = 20.dp, end = 20.dp),
+                        colors = ButtonDefaults.buttonColors(YellowIvy),
+                        shape = RoundedCornerShape(10.dp)
+                    ) {
+                        Text(text = "More")
+
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+
                 }
 
                 Row (modifier = Modifier

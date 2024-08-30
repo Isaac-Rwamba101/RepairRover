@@ -54,6 +54,7 @@ import com.example.rerpairrover.models.Task
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
 import com.example.rerpairrover.navigation.ROUT_UPLOAD
+import com.example.rerpairrover.ui.theme.YellowIvy
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -62,7 +63,7 @@ fun ViewScreen(navController: NavController){
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.LightGray)
+                .background(YellowIvy)
         ) {
 
             val context = LocalContext.current

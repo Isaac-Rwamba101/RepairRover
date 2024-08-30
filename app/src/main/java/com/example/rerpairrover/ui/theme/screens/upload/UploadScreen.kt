@@ -55,6 +55,7 @@ import com.example.rerpairrover.data.TaskViewModel
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
 import com.example.rerpairrover.navigation.ROUT_VIEW
+import com.example.rerpairrover.ui.theme.YellowIvy
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,7 +66,7 @@ fun UploadScreen(navController: NavController){
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.LightGray)
+                .background(Color.White)
                 .verticalScroll(rememberScrollState())
         ) {
             Column (
@@ -88,7 +89,7 @@ fun UploadScreen(navController: NavController){
                         imageVector = Icons.Default.Home,
                         contentDescription = null,
                         modifier = Modifier.clickable { navController.navigate(ROUT_HOME) },
-                        tint = Color.Black
+                        tint = YellowIvy
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(
@@ -109,7 +110,7 @@ fun UploadScreen(navController: NavController){
                             modifier = Modifier.clickable {
                                 navController.navigate(ROUT_ABOUT)
                             },
-                            tint = Color.Black
+                            tint = YellowIvy
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
@@ -134,7 +135,7 @@ fun UploadScreen(navController: NavController){
                             .size(70.dp),
                         shape = RoundedCornerShape(50),
                         colors = CardDefaults.cardColors(
-                            containerColor = Color.Gray
+                            containerColor = Color.White
                         )
                     ){
                         Image(
@@ -168,7 +169,7 @@ fun UploadScreen(navController: NavController){
                     Button(
                         onClick = { /*TODO*/ },
                         shape = RoundedCornerShape(topStart = 10.dp, bottomStart = 10.dp),
-                        colors = ButtonDefaults.buttonColors(Color.Black)
+                        colors = ButtonDefaults.buttonColors(YellowIvy)
                     ) {
                         Text(
                             text = "Add Task",
@@ -178,7 +179,7 @@ fun UploadScreen(navController: NavController){
                     Button(
                         onClick = { navController.navigate(ROUT_VIEW) },
                         shape = RoundedCornerShape(topEnd = 10.dp, bottomEnd = 10.dp),
-                        colors = ButtonDefaults.buttonColors(Color.Gray),
+                        colors = ButtonDefaults.buttonColors(Color.Red),
                     ) {
                         Text(
                             text = "View Tasks",
@@ -205,7 +206,7 @@ fun UploadScreen(navController: NavController){
                         )
                     },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                    label = { Text(text = "Task Name") }
+                    label = { Text(text = "Topic of Review") }
                 )
 
                 Spacer(modifier = Modifier.height(13.dp))
@@ -213,14 +214,14 @@ fun UploadScreen(navController: NavController){
                 OutlinedTextField(
                     value = taskDescription,
                     onValueChange = { taskDescription = it },
-                    placeholder = { Text(text="eg. Water the plants using the red hose... ") },
+                    placeholder = { Text(text="eg. Products & Services,Website...... ") },
                     modifier = Modifier
                         .height(130.dp)
                         .fillMaxWidth()
                         .padding(horizontal = 15.dp),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     label = { Text(
-                        text = "Task Description",
+                        text = "Write your reviews here....",
                         fontSize = 17.sp,
                         textDecoration = TextDecoration.Underline
                     )
@@ -244,7 +245,7 @@ fun UploadScreen(navController: NavController){
             taskRepository.uploadTask(name, description)
         },
             shape = RoundedCornerShape(5.dp),
-            colors = ButtonDefaults.buttonColors(Color.Gray),
+            colors = ButtonDefaults.buttonColors(YellowIvy),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 30.dp, vertical = 20.dp)
