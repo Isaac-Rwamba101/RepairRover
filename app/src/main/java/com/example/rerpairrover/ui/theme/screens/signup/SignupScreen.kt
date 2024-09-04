@@ -124,18 +124,6 @@ fun SignupScreen(navController: NavController){
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                OutlinedTextField(
-                    value = name,
-                    onValueChange = {name = it},
-                    label = { Text(text = "Phone Number")},
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 20.dp, end = 20.dp),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Call, contentDescription = "", tint = YellowIvy)},
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
-                )
-
-                Spacer(modifier = Modifier.height(20.dp))
 
                 OutlinedTextField(
                     value = email,

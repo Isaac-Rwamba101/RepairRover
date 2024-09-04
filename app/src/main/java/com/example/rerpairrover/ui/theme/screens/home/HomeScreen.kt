@@ -534,23 +534,6 @@ val bottomNavItems = listOf(
 
 
 
-    BottomNavItem(
-        title = "Bookings",
-        route="bookings",
-        selectedIcon=Icons.Filled.DateRange,
-        unselectedIcon=Icons.Outlined.DateRange,
-        hasNews = true,
-        badges=5
-    ),
-
-    BottomNavItem(
-        title = "Locate Us",
-        route="location",
-        selectedIcon=Icons.Filled.Place,
-        unselectedIcon=Icons.Outlined.Place,
-        hasNews = true,
-        badges=1
-    ),
 
     BottomNavItem(
         title = "Settings",

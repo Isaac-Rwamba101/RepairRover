@@ -1,4 +1,4 @@
-package com.example.rerpairrover.ui.theme.screens.upload
+package com.example.rerpairrover.ui.theme.screens.reviews
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -54,7 +54,6 @@ import com.example.rerpairrover.R
 import com.example.rerpairrover.data.TaskViewModel
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
-import com.example.rerpairrover.navigation.ROUT_VIEW
 import com.example.rerpairrover.ui.theme.YellowIvy
 
 
@@ -162,32 +161,6 @@ fun UploadScreen(navController: NavController){
                 // intro row end
                 Spacer(modifier = Modifier.height(5.dp))
 
-                Row (
-                    modifier= Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ){
-                    Button(
-                        onClick = { /*TODO*/ },
-                        shape = RoundedCornerShape(topStart = 10.dp, bottomStart = 10.dp),
-                        colors = ButtonDefaults.buttonColors(YellowIvy)
-                    ) {
-                        Text(
-                            text = "Add Task",
-                            fontSize = 16.sp
-                        )
-                    }
-                    Button(
-                        onClick = { navController.navigate(ROUT_VIEW) },
-                        shape = RoundedCornerShape(topEnd = 10.dp, bottomEnd = 10.dp),
-                        colors = ButtonDefaults.buttonColors(Color.Red),
-                    ) {
-                        Text(
-                            text = "View Tasks",
-                            color = Color.Black,
-                            fontSize = 16.sp
-                        )
-                    }
-                }
 
                 Spacer(modifier = Modifier.height(28.dp))
 

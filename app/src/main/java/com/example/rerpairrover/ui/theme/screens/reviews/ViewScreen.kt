@@ -1,4 +1,4 @@
-package com.example.rerpairrover.ui.theme.screens.view
+package com.example.rerpairrover.ui.theme.screens.reviews
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -46,14 +46,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
 import com.example.rerpairrover.data.TaskViewModel
 import com.example.rerpairrover.models.Task
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
-import com.example.rerpairrover.navigation.ROUT_UPLOAD
 import com.example.rerpairrover.ui.theme.YellowIvy
 import com.google.firebase.auth.FirebaseAuth
 
@@ -63,7 +61,7 @@ fun ViewScreen(navController: NavController){
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(YellowIvy)
+                .background(Color.White)
         ) {
 
             val context = LocalContext.current
@@ -163,23 +161,14 @@ fun ViewScreen(navController: NavController){
                     Button(
                         onClick = { /*TODO*/ },
                         shape = RoundedCornerShape(topStart = 10.dp, bottomStart = 10.dp),
-                        colors = ButtonDefaults.buttonColors(Color.Black)
+                        colors = ButtonDefaults.buttonColors(YellowIvy)
                     ) {
                         Text(
                             text = "View Tasks",
                             fontSize = 16.sp
                         )
                     }
-                    Button(
-                        onClick = { navController.navigate(ROUT_UPLOAD) },
-                        shape = RoundedCornerShape(topEnd = 10.dp, bottomEnd = 10.dp),
-                        colors = ButtonDefaults.buttonColors(Color.Gray),
-                    ) {
-                        Text(
-                            text = "Add Task",
-                            fontSize = 16.sp
-                        )
-                    }
+
                 }
 
                 Spacer(modifier = Modifier.height(15.dp))
@@ -222,7 +211,7 @@ fun ViewScreen(navController: NavController){
                 modifier = Modifier
                     .fillMaxWidth(),
                 colors = CardDefaults.cardColors(
-                    Color.Gray
+                    Color.White
                 )
             ){
                 Column (

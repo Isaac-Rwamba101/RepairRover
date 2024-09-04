@@ -10,7 +10,7 @@ import com.example.repairrover.ui.theme.screens.signup.SignupScreen
 import com.example.rerpairrover.ui.theme.screens.about.AboutScreen
 import com.example.rerpairrover.ui.theme.screens.accessories.AccessoriesScreen
 import com.example.rerpairrover.ui.theme.screens.admin.AdminScreen
-import com.example.rerpairrover.ui.theme.screens.bookings.BookingsScreen
+import com.example.rerpairrover.ui.theme.screens.bookings.AddBookingsScreen
 import com.example.rerpairrover.ui.theme.screens.contacts.ContactsScreen
 import com.example.rerpairrover.ui.theme.screens.home.HomeScreen
 import com.example.rerpairrover.ui.theme.screens.location.LocationScreen
@@ -21,8 +21,9 @@ import com.example.rerpairrover.ui.theme.screens.oilservice.OilserviceScreen
 import com.example.rerpairrover.ui.theme.screens.settings.SettingsScreen
 import com.example.rerpairrover.ui.theme.screens.splash.SplashScreen
 import com.example.rerpairrover.ui.theme.screens.tyres.TyresScreen
-import com.example.rerpairrover.ui.theme.screens.upload.UploadScreen
-import com.example.rerpairrover.ui.theme.screens.view.ViewScreen
+import com.example.rerpairrover.ui.theme.screens.reviews.UploadScreen
+import com.example.rerpairrover.ui.theme.screens.reviews.ViewScreen
+import com.example.rerpairrover.ui.theme.screens.bookings.ViewBookingScreen
 
 @Composable
 fun AppNavHost(
@@ -82,7 +83,11 @@ fun AppNavHost(
         }
 
         composable(ROUT_BOOKINGS) {
-           BookingsScreen(navController = navController)
+           AddBookingsScreen(navController = navController)
+        }
+
+        composable(ROUT_VIEWBOOKINGS) {
+            ViewBookingScreen(navController = navController)
         }
 
         composable(ROUT_NOTIFICATIONS) {

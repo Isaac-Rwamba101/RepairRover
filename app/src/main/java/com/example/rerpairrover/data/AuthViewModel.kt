@@ -8,6 +8,7 @@ import com.example.rerpairrover.models.User
 import com.example.rerpairrover.navigation.ROUT_HOME
 import com.example.rerpairrover.navigation.ROUT_LOGIN
 import com.example.rerpairrover.navigation.ROUT_SIGNUP
+import com.example.rerpairrover.navigation.ROUT_VIEW
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -71,6 +72,30 @@ class AuthViewModel(var navController: NavController, var context: Context){
                 }
             }
 
+        }
+    }
+
+    fun adminlogin(email: String, password: String){
+        progress.show()
+
+        if (email.isBlank() || password.isBlank()){
+            Toast.makeText(context,"Please email and password cannot be blank", Toast.LENGTH_LONG).show()
+        }
+        else if(email=="admin@gmail.com"&&password=="imr2003"){
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                progress.dismiss()
+                if (it.isSuccessful){
+                    Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
+                    navController.navigate(ROUT_VIEW)
+                }else{
+                    Toast.makeText(this.context, "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
+
+        else{
+            navController.navigate(ROUT_LOGIN)
         }
     }
 

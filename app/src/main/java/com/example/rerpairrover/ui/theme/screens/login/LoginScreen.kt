@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -97,7 +99,8 @@ fun LoginScreen(navController: NavController){
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp).padding(20.dp),
+                .verticalScroll(rememberScrollState())
+                .height(400.dp).padding(20.dp),
             shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp, bottomEnd = 30.dp, bottomStart = 30.dp),
             colors = CardDefaults.cardColors(Color.White)
 
@@ -171,7 +174,22 @@ fun LoginScreen(navController: NavController){
                 colors = ButtonDefaults.buttonColors(YellowIvy),
                 shape = RoundedCornerShape(10.dp)
             ) {
-                Text(text = "Log In")
+                Text(text = "Log In As User")
+
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(onClick = { authViewModel.adminlogin(email, password) },
+
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .padding(start = 20.dp, end = 20.dp),
+                colors = ButtonDefaults.buttonColors(YellowIvy),
+                shape = RoundedCornerShape(10.dp)
+            ) {
+                Text(text = "Log In As Admin")
 
             }
 
