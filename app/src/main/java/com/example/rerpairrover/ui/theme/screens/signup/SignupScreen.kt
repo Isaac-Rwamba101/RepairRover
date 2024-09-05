@@ -94,6 +94,7 @@ fun SignupScreen(navController: NavController){
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var confpassword by remember { mutableStateOf("") }
+        var phone by remember { mutableStateOf("") }
         var passwordVisible1 by remember { mutableStateOf(false) }
 
 
@@ -210,6 +211,19 @@ fun SignupScreen(navController: NavController){
                         }
                     }
 
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                OutlinedTextField(
+                    value = phone,
+                    onValueChange = {phone = it},
+                    label = { Text(text = "Phone Number")},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp),
+                    leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "", tint = YellowIvy)},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
                 )
 
                 Spacer(modifier = Modifier.height(20.dp))

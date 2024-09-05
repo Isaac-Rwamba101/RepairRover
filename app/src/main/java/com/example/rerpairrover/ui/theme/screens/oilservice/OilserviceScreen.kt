@@ -95,7 +95,7 @@ fun OilserviceScreen(navController: NavController){
                     .background(YellowIvy)
                     .fillMaxWidth()
                     .padding(top = 20.dp)){
-                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
@@ -133,7 +133,7 @@ fun OilserviceScreen(navController: NavController){
 
                 Row(modifier = Modifier
                     .fillMaxWidth()) {
-                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
@@ -171,7 +171,7 @@ fun OilserviceScreen(navController: NavController){
                 Row(modifier = Modifier
                     .background(YellowIvy)
                     .fillMaxWidth()) {
-                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
@@ -209,7 +209,7 @@ fun OilserviceScreen(navController: NavController){
                 Spacer(modifier = Modifier.height(20.dp))
                 Row(modifier = Modifier
                     .fillMaxWidth()) {
-                    Card(modifier = Modifier.padding(top = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)

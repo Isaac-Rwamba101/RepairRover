@@ -32,9 +32,9 @@ class BookingViewModel(var navController: NavController, var context: Context) {
     }
 
     fun uploadBooking(name:String, service:String,date:String, time:String,phone: String,filePath: Uri){
-        val productId = System.currentTimeMillis().toString()
+        val bookingId = System.currentTimeMillis().toString()
         val storageRef = FirebaseStorage.getInstance().getReference()
-            .child("Bookings/$productId")
+            .child("Bookings/$bookingId")
         progress.show()
         storageRef.putFile(filePath).addOnCompleteListener{
             progress.dismiss()
@@ -42,10 +42,10 @@ class BookingViewModel(var navController: NavController, var context: Context) {
                 // Save data to db
                 storageRef.downloadUrl.addOnSuccessListener {
                     var imageUrl = it.toString()
-                    var product = Booking(name,service,date,time,phone,imageUrl,productId)
+                    var booking = Booking(name,service,date,time,phone,imageUrl,bookingId)
                     var databaseRef = FirebaseDatabase.getInstance().getReference()
-                        .child("Products/$productId")
-                    databaseRef.setValue(product).addOnCompleteListener {
+                        .child("Bookings/$bookingId")
+                    databaseRef.setValue(booking).addOnCompleteListener {
                         if (it.isSuccessful){
                             navController.navigate(ROUT_VIEWBOOKINGS)
                             Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
@@ -65,14 +65,14 @@ class BookingViewModel(var navController: NavController, var context: Context) {
         bookings: SnapshotStateList<Booking>):SnapshotStateList<Booking>{
         progress.show()
         var ref = FirebaseDatabase.getInstance().getReference()
-            .child("Products")
+            .child("Bookings")
         ref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 bookings.clear()
                 for (snap in snapshot.children){
-                    var retrievedProduct = snap.getValue(Booking::class.java)
-                    booking.value = retrievedProduct!!
-                    bookings.add(retrievedProduct)
+                    var retrievedBooking = snap.getValue(Booking::class.java)
+                    booking.value = retrievedBooking!!
+                    bookings.add(retrievedBooking)
                 }
                 progress.dismiss()
             }
@@ -84,17 +84,17 @@ class BookingViewModel(var navController: NavController, var context: Context) {
         return bookings
     }
 
-    fun updateBooking(productId:String){
+    fun updateBooking(bookingId:String){
         var ref = FirebaseDatabase.getInstance().getReference()
-            .child("Products/$productId")
+            .child("Bookings/$bookingId")
         ref.removeValue()
         navController.navigate(ROUT_BOOKINGS)
     }
 
 
-    fun deleteBooking(productId:String){
+    fun deleteBooking(bookingId:String){
         var ref = FirebaseDatabase.getInstance().getReference()
-            .child("Products/$productId")
+            .child("Bookings/$bookingId")
         ref.removeValue()
         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
     }

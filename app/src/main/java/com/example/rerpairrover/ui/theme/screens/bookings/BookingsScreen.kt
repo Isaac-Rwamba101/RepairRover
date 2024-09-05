@@ -88,6 +88,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.data.BookingViewModel
 import com.example.rerpairrover.navigation.ROUT_HOME
+import com.example.rerpairrover.ui.theme.Orange
 import com.example.rerpairrover.ui.theme.YellowIvy
 import java.util.Calendar
 
@@ -317,7 +318,7 @@ fun AddBookingsScreen(navController:NavHostController){
                         ).show()
                      },
                         shape = RoundedCornerShape(10.dp),
-                        colors = ButtonDefaults.buttonColors(Color.Red),
+                        colors = ButtonDefaults.buttonColors(Orange),
                         modifier = Modifier
                            .height(65.dp)
                            .padding(top = 10.dp)) {
@@ -495,7 +496,7 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context,navController: N
                imagePicker.launch("image/*")
             },
             shape = RoundedCornerShape(5.dp),
-            colors = ButtonDefaults.buttonColors(Color.Gray)
+            colors = ButtonDefaults.buttonColors(Orange)
          ) {
             Text(
                text = "Select Image"
@@ -506,13 +507,13 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context,navController: N
 
          Button(onClick = {
             //-----------WRITE THE UPLOAD LOGIC HERE---------------//
-            var productRepository = BookingViewModel(navController,context)
-            productRepository.uploadBooking(name,service,date,time,phone,imageUri!!)
+            var bookingRepository = BookingViewModel(navController,context)
+            bookingRepository.uploadBooking(name,service,date,time,phone,imageUri!!)
 
 
          },
             shape = RoundedCornerShape(5.dp),
-            colors = ButtonDefaults.buttonColors(Color.Gray)) {
+            colors = ButtonDefaults.buttonColors(Color.Red)) {
             Text(text = "Upload")
          }
 

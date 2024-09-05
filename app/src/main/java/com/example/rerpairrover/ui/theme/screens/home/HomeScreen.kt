@@ -69,6 +69,7 @@ import com.example.rerpairrover.R
 import com.example.rerpairrover.navigation.ROUT_ACCESSORIES
 import com.example.rerpairrover.navigation.ROUT_BOOKINGS
 import com.example.rerpairrover.navigation.ROUT_CONTACTS
+import com.example.rerpairrover.navigation.ROUT_LOCATION
 import com.example.rerpairrover.navigation.ROUT_MECHANICAL
 import com.example.rerpairrover.navigation.ROUT_NOTIFICATIONS
 import com.example.rerpairrover.navigation.ROUT_OIL
@@ -191,8 +192,7 @@ fun HomeScreen(navController: NavController){
 
             Column (modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 80.dp)
-                .horizontalScroll(rememberScrollState()),
+                .padding(top = 80.dp),
                 horizontalAlignment = Alignment.CenterHorizontally){
 
                 //Start of main card
@@ -212,7 +212,9 @@ fun HomeScreen(navController: NavController){
                     }
 
                     //Row1
-                    Row(modifier = Modifier.padding(20.dp)) {
+                    Row(modifier = Modifier
+                        .padding(20.dp)
+                        .horizontalScroll(rememberScrollState())) {
 
 
                         //Card
@@ -354,7 +356,9 @@ fun HomeScreen(navController: NavController){
                             color = Color.Red)
                     }
                     //Row2
-                    Row(modifier = Modifier.padding(20.dp)) {
+                    Row(modifier = Modifier
+                        .padding(20.dp)
+                        .horizontalScroll(rememberScrollState())) {
                         //Card
                         Card(modifier = Modifier
                             .width(100.dp)
@@ -431,7 +435,7 @@ fun HomeScreen(navController: NavController){
                                 Box(modifier = Modifier.fillMaxWidth(),
                                     contentAlignment = Alignment.Center) {
                                     Image(painter = painterResource(
-                                        id = R.drawable.bookings
+                                        id = R.drawable.review
                                     ),
                                         contentDescription ="home",
                                         modifier = Modifier.size(65.dp) )
@@ -441,6 +445,37 @@ fun HomeScreen(navController: NavController){
                                 Spacer(modifier = Modifier.height(10.dp))
 
                                 Text(text = "Reviews",
+                                    fontSize = 17.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    modifier = Modifier.fillMaxWidth(),
+                                    textAlign = TextAlign.Center
+                                )
+
+                            }
+                        }
+                        //End of card
+                        Spacer(modifier = Modifier.width(10.dp))
+
+                        Card(modifier = Modifier
+                            .width(100.dp)
+                            .height(120.dp)
+                            .clickable { navController.navigate(ROUT_LOCATION) }) {
+                            Column {
+
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Box(modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center) {
+                                    Image(painter = painterResource(
+                                        id = R.drawable.location
+                                    ),
+                                        contentDescription ="home",
+                                        modifier = Modifier.size(65.dp) )
+
+
+                                }
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Text(text = "Locate Us",
                                     fontSize = 17.sp,
                                     fontFamily = FontFamily.Serif,
                                     modifier = Modifier.fillMaxWidth(),
@@ -532,8 +567,23 @@ val bottomNavItems = listOf(
         badges=0
     ),
 
+    BottomNavItem(
+        title = "Bookings",
+        route="bookings",
+        selectedIcon= Icons.Filled.DateRange,
+        unselectedIcon=Icons.Outlined.DateRange,
+        hasNews = false,
+        badges=0
+    ),
 
-
+    BottomNavItem(
+        title = "Location",
+        route="location",
+        selectedIcon= Icons.Filled.Place,
+        unselectedIcon=Icons.Outlined.Place,
+        hasNews = false,
+        badges=0
+    ),
 
     BottomNavItem(
         title = "Settings",

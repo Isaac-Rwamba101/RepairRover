@@ -75,7 +75,7 @@ fun MechanicalpartsScreen(navController: NavController){
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(900.dp)
+                    .height(1000.dp)
                     .verticalScroll(rememberScrollState()),
                 shape = RoundedCornerShape(40.dp),
                 colors = CardDefaults.cardColors(Color.White)
@@ -92,12 +92,13 @@ fun MechanicalpartsScreen(navController: NavController){
                     .background(YellowIvy)
                     .fillMaxWidth()
                     .padding(top = 20.dp)){
-                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp, start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
                             .width(100.dp)
-                            .background(Color.Gray), contentAlignment = Alignment.Center){
+                            .background(Color.Gray),
+                            contentAlignment = Alignment.Center){
 
                             Image(
                                 painter = painterResource(id = com.example.rerpairrover.R.drawable.brakes),
@@ -130,7 +131,7 @@ fun MechanicalpartsScreen(navController: NavController){
 
                 Row(modifier = Modifier
                     .fillMaxWidth()) {
-                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
@@ -168,7 +169,7 @@ fun MechanicalpartsScreen(navController: NavController){
                 Row(modifier = Modifier
                     .background(YellowIvy)
                     .fillMaxWidth()) {
-                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
@@ -206,7 +207,7 @@ fun MechanicalpartsScreen(navController: NavController){
                 Spacer(modifier = Modifier.height(20.dp))
                 Row(modifier = Modifier
                     .fillMaxWidth()) {
-                    Card(modifier = Modifier.padding(top = 20.dp)) {
+                    Card(modifier = Modifier.padding(top = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
@@ -238,6 +239,8 @@ fun MechanicalpartsScreen(navController: NavController){
 
                         Text(text = "BOSCH and AUTOMATE wiper blades for all vehicle types ranging from natural rubber and graphite coating to synthetic rubbers to suit all budgets.")
                     }
+
+                    Spacer(modifier = Modifier.height(90.dp))
 
                 }
 

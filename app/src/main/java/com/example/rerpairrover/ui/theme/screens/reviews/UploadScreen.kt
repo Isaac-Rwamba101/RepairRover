@@ -54,6 +54,8 @@ import com.example.rerpairrover.R
 import com.example.rerpairrover.data.TaskViewModel
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
+import com.example.rerpairrover.navigation.ROUT_LOGIN
+import com.example.rerpairrover.navigation.ROUT_VIEW
 import com.example.rerpairrover.ui.theme.YellowIvy
 
 
@@ -161,6 +163,23 @@ fun UploadScreen(navController: NavController){
                 // intro row end
                 Spacer(modifier = Modifier.height(5.dp))
 
+                Row (
+                    modifier= Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ){
+                    Button(
+                        onClick = { navController.navigate(ROUT_VIEW)},
+                        shape = RoundedCornerShape(10.dp),
+                        colors = ButtonDefaults.buttonColors(YellowIvy)
+                    ) {
+                        Text(
+                            text = "View Tasks",
+                            fontSize = 16.sp
+                        )
+                    }
+
+                }
+
 
                 Spacer(modifier = Modifier.height(28.dp))
 
@@ -224,7 +243,7 @@ fun UploadScreen(navController: NavController){
                 .padding(horizontal = 30.dp, vertical = 20.dp)
         ) {
             Text(
-                text = "Add Task",
+                text = "Submit Review",
                 fontSize = 17.sp
             )
         }

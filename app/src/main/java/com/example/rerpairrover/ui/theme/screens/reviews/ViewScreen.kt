@@ -52,6 +52,8 @@ import com.example.rerpairrover.data.TaskViewModel
 import com.example.rerpairrover.models.Task
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
+import com.example.rerpairrover.navigation.ROUT_LOGIN
+import com.example.rerpairrover.navigation.ROUT_UPLOAD
 import com.example.rerpairrover.ui.theme.YellowIvy
 import com.google.firebase.auth.FirebaseAuth
 
@@ -89,6 +91,7 @@ fun ViewScreen(navController: NavController){
                         imageVector = Icons.Default.Home,
                         contentDescription = null,
                         modifier = Modifier.clickable { navController.navigate(ROUT_HOME) },
+                        tint = YellowIvy
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(
@@ -107,7 +110,9 @@ fun ViewScreen(navController: NavController){
                             contentDescription = null,
                             modifier = Modifier.clickable {
                                 navController.navigate(ROUT_ABOUT)
-                            }
+                            },
+                            tint = YellowIvy
+
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
@@ -159,12 +164,12 @@ fun ViewScreen(navController: NavController){
                     horizontalArrangement = Arrangement.Center
                 ){
                     Button(
-                        onClick = { /*TODO*/ },
-                        shape = RoundedCornerShape(topStart = 10.dp, bottomStart = 10.dp),
+                        onClick = { navController.navigate(ROUT_UPLOAD) },
+                        shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(YellowIvy)
                     ) {
                         Text(
-                            text = "View Tasks",
+                            text = "Upload Tasks",
                             fontSize = 16.sp
                         )
                     }
@@ -267,7 +272,7 @@ fun ViewScreen(navController: NavController){
                                     taskRepository.deleteTask(id)
                                 },
                                 colors = ButtonDefaults.buttonColors(
-                                    Color.Gray
+                                    Color.Red
                                 ),
                                 shape = RoundedCornerShape(8.dp)
                             ) {
