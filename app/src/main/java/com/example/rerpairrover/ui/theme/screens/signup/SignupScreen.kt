@@ -94,7 +94,15 @@ fun SignupScreen(navController: NavController){
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var confpassword by remember { mutableStateOf("") }
-        var passwordVisible1 by remember { mutableStateOf(false) }
+        var passwordVisible by remember { mutableStateOf(false) }
+        // Function to determine visual transformation based on visibility
+        val visualTransformation: VisualTransformation =
+            if (passwordVisible) VisualTransformation.None
+            else PasswordVisualTransformation()
+        // Function to switch the password visibility
+        fun togglePasswordVisibility() {
+            passwordVisible = !passwordVisible
+        }
 
 
             Card(
@@ -138,15 +146,7 @@ fun SignupScreen(navController: NavController){
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                var passwordVisible by remember { mutableStateOf(false) }
-                // Function to determine visual transformation based on visibility
-                val visualTransformation: VisualTransformation =
-                    if (passwordVisible) VisualTransformation.None
-                    else PasswordVisualTransformation()
-                // Function to switch the password visibility
-                fun togglePasswordVisibility() {
-                    passwordVisible = !passwordVisible
-                }
+
 
                 OutlinedTextField(
                     value = password,
@@ -176,26 +176,19 @@ fun SignupScreen(navController: NavController){
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                var passwordVisible2 by remember { mutableStateOf(false) }
-                // Function to determine visual transformation based on visibility
-                val visualTransformation2: VisualTransformation =
-                    if (passwordVisible) VisualTransformation.None
-                    else PasswordVisualTransformation()
-                // Function to switch the password visibility
-                fun togglePasswordVisibility2() {
-                    passwordVisible = !passwordVisible
-                }
-
                 OutlinedTextField(
-                    value = password,
-                    onValueChange = {password = it},
-                    label = { Text(text = "Confirm Password", fontFamily = FontFamily.SansSerif)},
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "",tint = YellowIvy) },
+
+                    value = confpassword,
+                    onValueChange ={confpassword=it},
+                    label = { Text(text = "Confirm Password",
+                        fontFamily = FontFamily.SansSerif
+                    )},
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 20.dp, end = 20.dp),
-                    shape = RoundedCornerShape(5.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "password", tint = YellowIvy)},
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     visualTransformation = visualTransformation,
                     trailingIcon = {
                         val icon = if (passwordVisible) {
@@ -205,10 +198,11 @@ fun SignupScreen(navController: NavController){
                             //Download a password hide icon
                             painterResource(id = R.drawable.hide)
                         }
-                        IconButton(onClick = { togglePasswordVisibility() }) {
+                        IconButton(onClick = { togglePasswordVisibility() }, modifier = Modifier.size(20.dp)) {
                             Icon(painter = icon, contentDescription = null)
                         }
                     }
+
 
                 )
 
