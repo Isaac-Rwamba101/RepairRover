@@ -75,6 +75,7 @@ import com.example.rerpairrover.navigation.ROUT_NOTIFICATIONS
 import com.example.rerpairrover.navigation.ROUT_OIL
 import com.example.rerpairrover.navigation.ROUT_TYRES
 import com.example.rerpairrover.navigation.ROUT_UPLOAD
+import com.example.rerpairrover.navigation.ROUT_WEBSITE
 import com.example.rerpairrover.ui.theme.YellowIvy
 import com.example.rerpairrover.ui.theme.screens.notifications.bottomNavItems
 import kotlinx.coroutines.launch
@@ -505,7 +506,7 @@ fun HomeScreen(navController: NavController){
                         Card(modifier = Modifier
                             .width(100.dp)
                             .height(120.dp)
-                            .clickable { navController.navigate(ROUT_OIL) }) {
+                            .clickable { navController.navigate(ROUT_WEBSITE) }) {
                             Column {
 
                                 Spacer(modifier = Modifier.height(10.dp))

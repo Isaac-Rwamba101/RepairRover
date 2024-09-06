@@ -174,11 +174,28 @@ fun LoginScreen(navController: NavController){
                 colors = ButtonDefaults.buttonColors(YellowIvy),
                 shape = RoundedCornerShape(10.dp)
             ) {
-                Text(text = "Log In As User")
+                Text(text = "Log In ")
 
             }
 
             Spacer(modifier = Modifier.height(20.dp))
+
+            val context1 = LocalContext.current
+            val authViewModel1 = AuthViewModel(navController, context)
+            Button(onClick = { authViewModel.adminlogin(email, password) },
+
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .padding(start = 20.dp, end = 20.dp),
+                colors = ButtonDefaults.buttonColors(YellowIvy),
+                shape = RoundedCornerShape(10.dp)
+            ) {
+                Text(text = "Log In As Admin")
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+            }
 
             Text(
                 text = "Do not have an account?Sign up",

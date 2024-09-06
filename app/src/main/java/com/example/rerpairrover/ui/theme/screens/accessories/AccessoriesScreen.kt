@@ -89,21 +89,7 @@ fun AccessoriesScreen(navController: NavController){
                     Text(text = "This range is made up of various categories:")
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    val context = LocalContext.current
-                    val authViewModel = AuthViewModel(navController, context)
-                    Button(onClick = { navController.navigate(ROUT_HOME) },
 
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp)
-                            .padding(start = 20.dp, end = 20.dp),
-                        colors = ButtonDefaults.buttonColors(YellowIvy),
-                        shape = RoundedCornerShape(10.dp)
-                    ) {
-                        Text(text = "More")
-
-                    }
-                    Spacer(modifier = Modifier.height(10.dp))
 
                 }
 
@@ -149,14 +135,14 @@ fun AccessoriesScreen(navController: NavController){
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Row (modifier = Modifier
-                    .background(Color.LightGray)
+                    .background(Color.White)
                     .fillMaxWidth()){
                     Card(modifier = Modifier.padding(top = 20.dp, bottom = 20.dp,start = 5.dp)) {
 
                         Box(modifier = Modifier
                             .height(100.dp)
                             .width(100.dp)
-                            .background(Color.Gray), contentAlignment = Alignment.Center){
+                            .background(Color.White), contentAlignment = Alignment.Center){
 
                             Image(
                                 painter = painterResource(id = com.example.rerpairrover.R.drawable.fashion),
@@ -265,6 +251,7 @@ fun AccessoriesScreen(navController: NavController){
 
                 Spacer(modifier = Modifier.height(20.dp))
                 Row(modifier = Modifier
+                    .background(YellowIvy)
                     .fillMaxWidth()) {
                     Card(modifier = Modifier.padding(top = 20.dp)) {
 
@@ -343,6 +330,7 @@ fun AccessoriesScreen(navController: NavController){
 
                 Spacer(modifier = Modifier.height(20.dp))
                 Row(modifier = Modifier
+                    .background(YellowIvy)
                     .fillMaxWidth()) {
                     Card(modifier = Modifier.padding(top = 20.dp)) {
 

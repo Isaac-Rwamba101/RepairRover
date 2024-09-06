@@ -140,7 +140,7 @@ fun UploadScreen(navController: NavController){
                         )
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.img_2),
+                            painter = painterResource(id = R.drawable.repair),
                             contentDescription = "top icon",
                             contentScale = ContentScale.FillBounds,
                             modifier = Modifier
@@ -152,7 +152,7 @@ fun UploadScreen(navController: NavController){
 
                 }
                 Text(
-                    text = "Add Task",
+                    text = "Add Reviews",
                     fontSize = 26.sp,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
@@ -173,7 +173,7 @@ fun UploadScreen(navController: NavController){
                         colors = ButtonDefaults.buttonColors(YellowIvy)
                     ) {
                         Text(
-                            text = "View Tasks",
+                            text = "View Reviews",
                             fontSize = 16.sp
                         )
                     }

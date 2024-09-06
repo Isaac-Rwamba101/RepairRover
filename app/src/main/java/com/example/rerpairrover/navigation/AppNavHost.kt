@@ -24,6 +24,7 @@ import com.example.rerpairrover.ui.theme.screens.tyres.TyresScreen
 import com.example.rerpairrover.ui.theme.screens.reviews.UploadScreen
 import com.example.rerpairrover.ui.theme.screens.reviews.ViewScreen
 import com.example.rerpairrover.ui.theme.screens.bookings.ViewBookingScreen
+import com.example.rerpairrover.ui.theme.screens.website.WebsiteScreen
 
 @Composable
 fun AppNavHost(
@@ -108,6 +109,10 @@ fun AppNavHost(
 
         composable(ROUT_ADMIN) {
             AdminScreen(navController = navController)
+        }
+
+        composable(ROUT_WEBSITE) {
+            WebsiteScreen(navController = navController)
         }
 
 

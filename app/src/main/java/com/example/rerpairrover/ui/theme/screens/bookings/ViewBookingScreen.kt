@@ -61,6 +61,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.rerpairrover.data.BookingViewModel
 import com.example.rerpairrover.models.Booking
 import com.example.rerpairrover.navigation.ROUT_BOOKINGS
+import com.example.rerpairrover.ui.theme.YellowIvy
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -82,7 +83,7 @@ fun ViewBookingScreen(navController: NavController) {
       Scaffold(
          bottomBar = {
             NavigationBar (
-               containerColor = Color.LightGray,
+               containerColor = YellowIvy,
                contentColor = Color.Black){
                bottomNavItems.forEachIndexed { index, bottomNavItem ->
                   NavigationBarItem(
@@ -125,6 +126,7 @@ fun ViewBookingScreen(navController: NavController) {
                title = { Text(text = "Available Products",
                   modifier = Modifier.fillMaxWidth(),
                   textAlign = TextAlign.Center,
+                  color = YellowIvy,
                   fontSize = 20.sp,
                   fontFamily = FontFamily.SansSerif) })
 
@@ -133,7 +135,7 @@ fun ViewBookingScreen(navController: NavController) {
          floatingActionButton = {
             FloatingActionButton(
                onClick = { /*TODO*/ },
-               containerColor = Color.LightGray) {
+               containerColor = YellowIvy) {
                IconButton(onClick = {
                   navController.navigate(ROUT_BOOKINGS)
                }) {
@@ -246,7 +248,7 @@ fun BookingItem(name:String, service:String, date:String,time:String, phone:Stri
 
                   Spacer(modifier = Modifier.height(5.dp))
 
-                  Text(text = "Time : Ksh.$time",
+                  Text(text = "Time :$time",
                      fontSize = 19.sp,
                      fontWeight = FontWeight.Bold,
                      fontFamily = FontFamily.Default,
@@ -266,7 +268,7 @@ fun BookingItem(name:String, service:String, date:String,time:String, phone:Stri
                         onClick = {
                            val smsIntent= Intent(Intent.ACTION_SENDTO)
                            smsIntent.data="smsto:$phone".toUri()
-                           smsIntent.putExtra("sms_body","Hello Seller,...?")
+                           smsIntent.putExtra("sms_body","Hello,...?")
                            mContext.startActivity(smsIntent)
                         },
                         shape = RoundedCornerShape(8.dp),
@@ -275,10 +277,10 @@ fun BookingItem(name:String, service:String, date:String,time:String, phone:Stri
                         Row {
                            Icon(
                               imageVector = Icons.Default.Send,
-                              contentDescription = "Message Seller")
+                              contentDescription = "Message Office")
                            Spacer(modifier = Modifier.width(3.dp))
                            Text(
-                              text = "Message Seller"
+                              text = "Message Office"
                            )
                         }
                      }

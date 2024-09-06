@@ -137,7 +137,7 @@ fun ViewScreen(navController: NavController){
                         shape = RoundedCornerShape(50)
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.img_2),
+                            painter = painterResource(id = R.drawable.repair),
                             contentDescription = "top icon",
                             contentScale = ContentScale.FillBounds,
                             modifier = Modifier
@@ -149,7 +149,7 @@ fun ViewScreen(navController: NavController){
 
                 }
                 Text(
-                    text = "View Tasks",
+                    text = "View Reviews",
                     fontSize = 26.sp,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
@@ -169,7 +169,7 @@ fun ViewScreen(navController: NavController){
                         colors = ButtonDefaults.buttonColors(YellowIvy)
                     ) {
                         Text(
-                            text = "Upload Tasks",
+                            text = "Upload Reviews",
                             fontSize = 16.sp
                         )
                     }

@@ -246,7 +246,7 @@ fun AddBookingsScreen(navController:NavHostController){
 
                   // Start of Text Field with a dropdown
                   var mExpanded by remember { mutableStateOf(false) }
-                  val options = listOf("Oil Maintenance", "Accessories", "Tyre Change")
+                  val options = listOf("Oil Service", "Accessories","Wheel Alignment", "Tyre Service(Repairs & Balancing)","Brakes","Tyres","Suspension")
                   var mTextFieldSize by remember { mutableStateOf(Size.Zero) }
                   val icon =
                      if (mExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown

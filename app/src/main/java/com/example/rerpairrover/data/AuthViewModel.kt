@@ -9,6 +9,7 @@ import com.example.rerpairrover.navigation.ROUT_HOME
 import com.example.rerpairrover.navigation.ROUT_LOGIN
 import com.example.rerpairrover.navigation.ROUT_SIGNUP
 import com.example.rerpairrover.navigation.ROUT_VIEW
+import com.example.rerpairrover.navigation.ROUT_VIEWBOOKINGS
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -56,15 +57,16 @@ class AuthViewModel(var navController: NavController, var context: Context){
     }
 
     fun login(email: String, password: String){
-        progress.show()
 
         if (email.isBlank() || password.isBlank()){
-            progress.dismiss()
             Toast.makeText(context,"Please email and password cannot be blank", Toast.LENGTH_LONG).show()
-        }else {
+        }
+        else if (email == "isA@gmail.com" && password == "123456"){
+            navController.navigate(ROUT_LOGIN)
+        }
+        else {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                progress.dismiss()
-                if (it.isSuccessful){
+                if (it.isSuccessful ){
                     Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
                     navController.navigate(ROUT_HOME)
                 }else{
@@ -75,6 +77,27 @@ class AuthViewModel(var navController: NavController, var context: Context){
         }
     }
 
+    fun adminlogin(email: String, password: String){
+
+        if (email.isBlank() || password.isBlank()){
+            Toast.makeText(context,"Please email and password cannot be blank", Toast.LENGTH_LONG).show()
+        }
+
+        else if (email == "isa@gmail.com" && password == "123456"){
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                if (it.isSuccessful ){
+                    Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
+                    navController.navigate(ROUT_VIEWBOOKINGS)
+                }else{
+                    Toast.makeText(this.context, "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
+        else{
+            navController.navigate(ROUT_LOGIN)
+        }
+    }
 
     fun logout(){
         mAuth.signOut()
