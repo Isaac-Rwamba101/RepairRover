@@ -187,7 +187,7 @@ fun UploadScreen(navController: NavController){
                 OutlinedTextField(
                     value = taskName,
                     onValueChange = { taskName = it },
-                    placeholder = { Text(text="eg. Water the plants") },
+                    placeholder = { Text(text="eg. Oil Maintenance,Accessories......") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 15.dp),
@@ -206,7 +206,7 @@ fun UploadScreen(navController: NavController){
                 OutlinedTextField(
                     value = taskDescription,
                     onValueChange = { taskDescription = it },
-                    placeholder = { Text(text="eg. Products & Services,Website...... ") },
+                    placeholder = { Text(text=" ") },
                     modifier = Modifier
                         .height(130.dp)
                         .fillMaxWidth()

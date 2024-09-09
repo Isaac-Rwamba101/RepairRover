@@ -123,7 +123,7 @@ fun ViewBookingScreen(navController: NavController) {
 
          topBar = {
             TopAppBar(
-               title = { Text(text = "Available Products",
+               title = { Text(text = "Available Bookings",
                   modifier = Modifier.fillMaxWidth(),
                   textAlign = TextAlign.Center,
                   color = YellowIvy,
@@ -134,7 +134,7 @@ fun ViewBookingScreen(navController: NavController) {
 
          floatingActionButton = {
             FloatingActionButton(
-               onClick = { /*TODO*/ },
+               onClick = { navController.navigate(ROUT_BOOKINGS)},
                containerColor = YellowIvy) {
                IconButton(onClick = {
                   navController.navigate(ROUT_BOOKINGS)
