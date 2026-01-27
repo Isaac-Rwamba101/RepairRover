@@ -185,8 +185,7 @@ fun AddBookingsScreen(navController:NavHostController){
                   modifier = Modifier
                      .fillMaxWidth()
                      .verticalScroll(rememberScrollState())
-                     .height(1250.dp)
-                     .clickable { navController.navigate(ROUT_HOME) },
+                     .height(1250.dp),
                   shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp),
                   colors = CardDefaults.cardColors(Color.White)
 
@@ -356,15 +355,48 @@ fun AddBookingsScreen(navController:NavHostController){
                      fontFamily = FontFamily.SansSerif
                   )
 
-                  OutlinedTextField(
-                     value = time,
-                     onValueChange = { time = it },
-                     label = { Text(text = "e.g 9:00 a.m") },
-                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 20.dp, end = 20.dp),
-                  )
+                  // Start of Text Field with a dropdown
+                  var mExpanded1 by remember { mutableStateOf(false) }
+                  val options1 = listOf("7:00 a.m.", "8:00 a.m.","9:00 a.m.", "10:00 a.m.","11:00 a.m.","12:00 p.m.","1:00 p.m.","2:00 p.m.","3:00 p.m.","4:00 p.m.","5:00 p.m.","6:00 p.m.")
+                  var mTextFieldSize1 by remember { mutableStateOf(Size.Zero) }
+                  val icon1 =
+                     if (mExpanded1) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown
+
+                  Column(Modifier.padding(20.dp)) {
+                     OutlinedTextField(
+                        value = time,
+                        onValueChange = { time = it },
+                        modifier = Modifier
+                           .fillMaxWidth()
+                           .onGloballyPositioned { coordinates ->
+                              mTextFieldSize1 = coordinates.size.toSize()
+                           },
+                        label = { Text("Choose preferred time") },
+                        trailingIcon = {
+                           Icon(icon, "contentDescription",
+                              Modifier.clickable { mExpanded1 = !mExpanded1 })
+                        }
+                     )
+                     DropdownMenu(
+                        expanded = mExpanded1,
+                        onDismissRequest = { mExpanded1 = false },
+                        modifier = Modifier.width(with(LocalDensity.current) { mTextFieldSize1.width.toDp() })
+                     ) {
+                        options1.forEach {
+
+                              label ->
+                           DropdownMenuItem(
+                              text = { Text(text = label) },
+                              onClick = {
+                                 time = label
+                                 mExpanded1 = false
+                              })
+
+
+                        }
+                     }
+                  }
+                  //End of TextField with dropdown
 
                   Spacer(modifier = Modifier.height(20.dp))
 

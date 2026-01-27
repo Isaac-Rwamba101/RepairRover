@@ -1,6 +1,6 @@
 package com.example.rerpairrover.models
 
-class Task {
+class Review {
     var name:String = ""
     var description:String = ""
     var id:String = ""

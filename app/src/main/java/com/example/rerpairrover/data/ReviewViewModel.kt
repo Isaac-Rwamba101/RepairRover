@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation.NavController
-import com.example.rerpairrover.models.Task
+import com.example.rerpairrover.models.Review
 import com.example.rerpairrover.navigation.ROUT_LOGIN
 import com.example.rerpairrover.navigation.ROUT_VIEW
 import com.google.firebase.auth.FirebaseAuth
@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class TaskViewModel(var navController: NavController, @SuppressLint("RestrictedApi") var context: android.content.Context) {
+class ReviewViewModel(var navController: NavController, @SuppressLint("RestrictedApi") var context: android.content.Context) {
     var authViewModel:AuthViewModel
     var progress: ProgressDialog
     init {
@@ -35,10 +35,10 @@ class TaskViewModel(var navController: NavController, @SuppressLint("RestrictedA
         val currentUser = FirebaseAuth.getInstance().currentUser
         val userId = currentUser?.uid
 
-        val task = Task(name,description,taskId,userId?:"")
+        val review = Review(name,description,taskId,userId?:"")
         val databaseRef = FirebaseDatabase.getInstance().getReference()
-            .child("Tasks/$taskId")
-        databaseRef.setValue(task).addOnCompleteListener {
+            .child("Reviews/$taskId")
+        databaseRef.setValue(review).addOnCompleteListener {
             progress.dismiss()
             if (it.isSuccessful){
                 navController.navigate(ROUT_VIEW)
@@ -52,32 +52,32 @@ class TaskViewModel(var navController: NavController, @SuppressLint("RestrictedA
 
     fun deleteTask(taskId:String){
         val ref = FirebaseDatabase.getInstance().getReference()
-            .child("Tasks/$taskId")
+            .child("Reviews/$taskId")
         ref.removeValue()
         Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show()
     }
 
     fun updateTask(taskId:String){
         val ref = FirebaseDatabase.getInstance().getReference()
-            .child("Tasks/$taskId")
+            .child("Reviews/$taskId")
         ref.removeValue()
         navController.navigate(ROUT_VIEW)
     }
 
     fun allTasks(
-        task: MutableState<Task>,
-        tasks: SnapshotStateList<Task>): SnapshotStateList<Task> {
+        review: MutableState<Review>,
+        reviews: SnapshotStateList<Review>): SnapshotStateList<Review> {
         progress.show()
 
         var ref = FirebaseDatabase.getInstance().getReference()
-            .child("Tasks")
+            .child("Reviews")
         ref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                tasks.clear()
+                reviews.clear()
                 for (snap in snapshot.children){
-                    val retrievedTask = snap.getValue(Task::class.java)
-                    task.value = retrievedTask!!
-                    tasks.add(retrievedTask)
+                    val retrievedReview = snap.getValue(Review::class.java)
+                    review.value = retrievedReview!!
+                    reviews.add(retrievedReview)
                 }
                 progress.dismiss()
             }
@@ -86,7 +86,7 @@ class TaskViewModel(var navController: NavController, @SuppressLint("RestrictedA
                 Toast.makeText(context, "DB locked", Toast.LENGTH_SHORT).show()
             }
         })
-        return tasks
+        return reviews
     }
 
 }

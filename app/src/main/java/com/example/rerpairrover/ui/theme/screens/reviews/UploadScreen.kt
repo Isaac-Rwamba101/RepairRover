@@ -51,10 +51,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
-import com.example.rerpairrover.data.TaskViewModel
+import com.example.rerpairrover.data.ReviewViewModel
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
-import com.example.rerpairrover.navigation.ROUT_LOGIN
 import com.example.rerpairrover.navigation.ROUT_VIEW
 import com.example.rerpairrover.ui.theme.YellowIvy
 
@@ -233,7 +232,7 @@ fun UploadScreen(navController: NavController){
     @Composable
     fun TaskUploadButton(modifier: Modifier = Modifier, context: android.content.Context, navController: NavController, name:String, description:String){
         Button(onClick = {
-            val taskRepository = TaskViewModel(navController,context)
+            val taskRepository = ReviewViewModel(navController,context)
             taskRepository.uploadTask(name, description)
         },
             shape = RoundedCornerShape(5.dp),

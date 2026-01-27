@@ -48,11 +48,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.rerpairrover.R
-import com.example.rerpairrover.data.TaskViewModel
-import com.example.rerpairrover.models.Task
+import com.example.rerpairrover.data.ReviewViewModel
+import com.example.rerpairrover.models.Review
 import com.example.rerpairrover.navigation.ROUT_ABOUT
 import com.example.rerpairrover.navigation.ROUT_HOME
-import com.example.rerpairrover.navigation.ROUT_LOGIN
 import com.example.rerpairrover.navigation.ROUT_UPLOAD
 import com.example.rerpairrover.ui.theme.YellowIvy
 import com.google.firebase.auth.FirebaseAuth
@@ -67,13 +66,13 @@ fun ViewScreen(navController: NavController){
         ) {
 
             val context = LocalContext.current
-            val taskRepository = TaskViewModel(navController, context)
+            val taskRepository = ReviewViewModel(navController, context)
 
 
-            val emptyTaskState = remember { mutableStateOf(Task("","","","")) }
-            val emptyTasksListState = remember { mutableStateListOf<Task>() }
+            val emptyReviewState = remember { mutableStateOf(Review("","","","")) }
+            val emptyTasksListState = remember { mutableStateListOf<Review>() }
 
-            val tasks = taskRepository.allTasks(emptyTaskState, emptyTasksListState)
+            val tasks = taskRepository.allTasks(emptyReviewState, emptyTasksListState)
 
             Column (
                 modifier = Modifier.padding(horizontal = 12.dp)
@@ -205,7 +204,7 @@ fun ViewScreen(navController: NavController){
     fun TaskItem(
         name:String, description:String,  id:String, userId:String,
         navController: NavController,
-        taskRepository: TaskViewModel
+        taskRepository: ReviewViewModel
     ){
         Column (
             modifier = Modifier
